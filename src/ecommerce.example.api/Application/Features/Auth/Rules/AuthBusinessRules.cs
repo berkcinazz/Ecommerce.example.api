@@ -25,7 +25,12 @@ public class AuthBusinessRules : BaseBusinessRules
             throw new BusinessException(AuthMessages.EmailAuthenticatorDontExists);
         return Task.CompletedTask;
     }
-
+    public Task PasswordAndPasswordVerifyShouldBeMatch(string password, string passwordVerify)
+    {
+        if (password != passwordVerify)
+            throw new BusinessException(AuthMessages.PasswordAndPasswordVerifyDoesntMatch);
+        return Task.CompletedTask;
+    }
     public Task OtpAuthenticatorShouldBeExists(OtpAuthenticator? otpAuthenticator)
     {
         if (otpAuthenticator is null)
