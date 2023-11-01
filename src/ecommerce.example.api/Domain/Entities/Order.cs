@@ -1,0 +1,10 @@
+﻿using Core.Persistence.Repositories;
+
+namespace Domain.Entities
+{
+    public class Order : Entity<int>
+    {
+        public float TotalAmount { get; set; }
+        public int UserId { get; set; }
+    }
+}

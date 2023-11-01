@@ -17,6 +17,9 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using Application.Services.Products;
 using Application.Services.Brands;
+using Application.Services.Orders;
+using Application.Services.Baskets;
+using Application.Services.OrderItems;
 
 namespace Application;
 
@@ -49,6 +52,9 @@ public static class ApplicationServiceRegistration
 
         services.AddScoped<IProductsService, ProductsManager>();
         services.AddScoped<IBrandsService, BrandsManager>();
+        services.AddScoped<IOrdersService, OrdersManager>();
+        services.AddScoped<IBasketsService, BasketsManager>();
+        services.AddScoped<IOrderItemsService, OrderItemsManager>();
         return services;
     }
 

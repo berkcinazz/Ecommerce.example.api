@@ -61,6 +61,48 @@ public class OperationClaimConfiguration : IEntityTypeConfiguration<OperationCla
         
         #endregion
         
+        
+        #region Orders
+        
+        seeds.Add(new OperationClaim { Id = ++id, Name = "Orders.Admin" });
+        
+        seeds.Add(new OperationClaim { Id = ++id, Name = "Orders.Read" });
+        seeds.Add(new OperationClaim { Id = ++id, Name = "Orders.Write" });
+        
+        seeds.Add(new OperationClaim { Id = ++id, Name = "Orders.Add" });
+        seeds.Add(new OperationClaim { Id = ++id, Name = "Orders.Update" });
+        seeds.Add(new OperationClaim { Id = ++id, Name = "Orders.Delete" });
+        
+        #endregion
+        
+        
+        #region Baskets
+        
+        seeds.Add(new OperationClaim { Id = ++id, Name = "Baskets.Admin" });
+        
+        seeds.Add(new OperationClaim { Id = ++id, Name = "Baskets.Read" });
+        seeds.Add(new OperationClaim { Id = ++id, Name = "Baskets.Write" });
+        
+        seeds.Add(new OperationClaim { Id = ++id, Name = "Baskets.Add" });
+        seeds.Add(new OperationClaim { Id = ++id, Name = "Baskets.Update" });
+        seeds.Add(new OperationClaim { Id = ++id, Name = "Baskets.Delete" });
+        
+        #endregion
+        
+        
+        #region OrderItems
+        
+        seeds.Add(new OperationClaim { Id = ++id, Name = "OrderItems.Admin" });
+        
+        seeds.Add(new OperationClaim { Id = ++id, Name = "OrderItems.Read" });
+        seeds.Add(new OperationClaim { Id = ++id, Name = "OrderItems.Write" });
+        
+        seeds.Add(new OperationClaim { Id = ++id, Name = "OrderItems.Add" });
+        seeds.Add(new OperationClaim { Id = ++id, Name = "OrderItems.Update" });
+        seeds.Add(new OperationClaim { Id = ++id, Name = "OrderItems.Delete" });
+        
+        #endregion
+        
         return seeds;
     }
 }
