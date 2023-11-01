@@ -18,7 +18,6 @@ public class UpdateBasketCommand : IRequest<UpdatedBasketResponse>, ISecuredRequ
     public int UserId { get; set; }
     public int ProductId { get; set; }
     public int Quantity { get; set; }
-    public float Amount { get; set; }
 
     public string[] Roles => new[] { Admin, Write, BasketsOperationClaims.Update };
 

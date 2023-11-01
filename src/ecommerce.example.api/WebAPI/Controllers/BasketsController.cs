@@ -44,11 +44,11 @@ public class BasketsController : BaseController
         return Ok(response);
     }
 
-    [HttpGet]
-    public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
+    [HttpGet("GetList")]
+    public async Task<IActionResult> GetList()
     {
-        GetListBasketQuery getListBasketQuery = new() { PageRequest = pageRequest };
-        GetListResponse<GetListBasketListItemDto> response = await Mediator.Send(getListBasketQuery);
+        GetListBasketQuery getListBasketQuery = new() { UserId = getUserIdFromRequest() };
+        var response = await Mediator.Send(getListBasketQuery);
         return Ok(response);
     }
 }
