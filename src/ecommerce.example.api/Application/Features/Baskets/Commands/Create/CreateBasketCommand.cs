@@ -16,7 +16,6 @@ public class CreateBasketCommand : IRequest<CreatedBasketResponse>, ISecuredRequ
 {
     public int UserId { get; set; }
     public int ProductId { get; set; }
-    public int Quantity { get; set; }
 
     public string[] Roles => new[] { Admin, Write, BasketsOperationClaims.Create };
 
@@ -41,7 +40,7 @@ public class CreateBasketCommand : IRequest<CreatedBasketResponse>, ISecuredRequ
         public async Task<CreatedBasketResponse> Handle(CreateBasketCommand request, CancellationToken cancellationToken)
         {
             Basket basket = _mapper.Map<Basket>(request);
-
+            basket.Quantity = 1;
             await _basketRepository.AddAsync(basket);
 
             CreatedBasketResponse response = _mapper.Map<CreatedBasketResponse>(basket);

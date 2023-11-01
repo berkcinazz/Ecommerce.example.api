@@ -14,9 +14,9 @@ namespace WebAPI.Controllers;
 public class BasketsController : BaseController
 {
     [HttpPost]
-    public async Task<IActionResult> Add([FromBody] CreateBasketCommand createBasketCommand)
+    public async Task<IActionResult> Add([FromQuery] int id)
     {
-        CreatedBasketResponse response = await Mediator.Send(createBasketCommand);
+        CreatedBasketResponse response = await Mediator.Send(new CreateBasketCommand { ProductId =id, UserId = getUserIdFromRequest() });
 
         return Created(uri: "", response);
     }

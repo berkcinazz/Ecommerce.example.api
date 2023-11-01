@@ -8,6 +8,5 @@ public class CreateBasketCommandValidator : AbstractValidator<CreateBasketComman
     {
         RuleFor(c => c.UserId).NotEmpty();
         RuleFor(c => c.ProductId).NotEmpty();
-        RuleFor(c => c.Quantity).NotEmpty();
     }
 }
