@@ -14,9 +14,9 @@ namespace WebAPI.Controllers;
 public class OrdersController : BaseController
 {
     [HttpPost]
-    public async Task<IActionResult> Add([FromBody] CreateOrderCommand createOrderCommand)
+    public async Task<IActionResult> Add()
     {
-        CreatedOrderResponse response = await Mediator.Send(createOrderCommand);
+        CreatedOrderResponse response = await Mediator.Send(new CreateOrderCommand() { UserId = getUserIdFromRequest()});
 
         return Created(uri: "", response);
     }
