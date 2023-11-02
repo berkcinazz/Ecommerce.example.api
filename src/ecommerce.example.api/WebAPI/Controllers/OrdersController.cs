@@ -37,10 +37,10 @@ public class OrdersController : BaseController
         return Ok(response);
     }
 
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetById([FromRoute] int id)
+    [HttpGet("GetOrders")]
+    public async Task<IActionResult> GetOrders()
     {
-        GetByIdOrderResponse response = await Mediator.Send(new GetByIdOrderQuery { Id = id });
+        var response = await Mediator.Send(new GetByUserIdOrderQuery { UserId = getUserIdFromRequest() });
         return Ok(response);
     }
 

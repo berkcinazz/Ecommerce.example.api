@@ -20,7 +20,7 @@ public class MappingProfiles : Profile
         CreateMap<Order, UpdatedOrderResponse>().ReverseMap();
         CreateMap<Order, DeleteOrderCommand>().ReverseMap();
         CreateMap<Order, DeletedOrderResponse>().ReverseMap();
-        CreateMap<Order, GetByIdOrderResponse>().ReverseMap();
+        CreateMap<Order, GetByUserIdOrderResponse>().ReverseMap();
         CreateMap<Order, GetListOrderListItemDto>().ReverseMap();
         CreateMap<IPaginate<Order>, GetListResponse<GetListOrderListItemDto>>().ReverseMap();
     }

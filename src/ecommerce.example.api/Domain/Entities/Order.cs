@@ -6,5 +6,7 @@ namespace Domain.Entities
     {
         public float TotalAmount { get; set; }
         public int UserId { get; set; }
+        public virtual List<OrderItem> Items { get; set; }
+
     }
 }

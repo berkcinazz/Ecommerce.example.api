@@ -9,13 +9,13 @@ using static Application.Features.Orders.Constants.OrdersOperationClaims;
 
 namespace Application.Features.Orders.Queries.GetById;
 
-public class GetByIdOrderQuery : IRequest<GetByIdOrderResponse>, ISecuredRequest
+public class GetByUserIdOrderQuery : IRequest<List<GetByUserIdOrderResponse>>, ISecuredRequest
 {
-    public int Id { get; set; }
+    public int UserId { get; set; }
 
     public string[] Roles => new[] { Admin, Read };
 
-    public class GetByIdOrderQueryHandler : IRequestHandler<GetByIdOrderQuery, GetByIdOrderResponse>
+    public class GetByIdOrderQueryHandler : IRequestHandler<GetByUserIdOrderQuery, List<GetByUserIdOrderResponse>>
     {
         private readonly IMapper _mapper;
         private readonly IOrderRepository _orderRepository;
@@ -28,13 +28,10 @@ public class GetByIdOrderQuery : IRequest<GetByIdOrderResponse>, ISecuredRequest
             _orderBusinessRules = orderBusinessRules;
         }
 
-        public async Task<GetByIdOrderResponse> Handle(GetByIdOrderQuery request, CancellationToken cancellationToken)
+        public async Task<List<GetByUserIdOrderResponse>> Handle(GetByUserIdOrderQuery request, CancellationToken cancellationToken)
         {
-            Order? order = await _orderRepository.GetAsync(predicate: o => o.Id == request.Id, cancellationToken: cancellationToken);
-            await _orderBusinessRules.OrderShouldExistWhenSelected(order);
-
-            GetByIdOrderResponse response = _mapper.Map<GetByIdOrderResponse>(order);
-            return response;
+            var order = _orderRepository.GetAllOrdersByUserId(request.UserId);
+            return order;
         }
     }
 }
