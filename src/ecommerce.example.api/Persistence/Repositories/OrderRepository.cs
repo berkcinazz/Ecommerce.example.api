@@ -15,10 +15,10 @@ public class OrderRepository : EfRepositoryBase<Order, int, BaseDbContext>, IOrd
 
     public List<GetByUserIdOrderResponse> GetAllOrdersByUserId(int userId)
     {
-        var orders = Context.Orders.Include(i => i.Items).Select(p => new GetByUserIdOrderResponse()
+        var orders = Context.Orders.Include(i => i.Items).ThenInclude(s => s.Product).Select(p => new GetByUserIdOrderResponse()
         {
             Id = p.Id,
-            Items = Context.OrderItems.Include(s=>s.Product).Select(a=>new OrderItem()
+            Items = p.Items.Select(a=>new OrderItem()
             {
                 Amount = a.Amount,
                 CreatedDate = a.CreatedDate,
